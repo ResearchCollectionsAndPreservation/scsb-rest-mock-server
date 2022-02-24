@@ -1,5 +1,6 @@
 package com.nypl.mockServer.controller;
 
+import com.nypl.mockServer.model.ItemResponse;
 import com.nypl.mockServer.request.*;
 import com.nypl.mockServer.response.*;
 import com.nypl.mockServer.service.RequestService;
@@ -84,6 +85,7 @@ public class RequestController {
         ItemInformationResponse itemInformationResponse = requestService.findItemByItemId(itemIdentifier);
         return new ResponseEntity<ItemInformationResponse>(itemInformationResponse,new HttpHeaders(),HttpStatus.OK);
   }
+
   @GetMapping("/patrons")
     public  ResponseEntity<PatronInformationResponse> lookupPatron(@RequestParam("barcode") String patronIdentifier){
         PatronInformationResponse patronInformationResponse=requestService.findPatronByPatronId(patronIdentifier);
