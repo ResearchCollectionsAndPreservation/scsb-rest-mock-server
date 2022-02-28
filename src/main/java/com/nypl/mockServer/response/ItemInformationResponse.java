@@ -2,8 +2,11 @@ package com.nypl.mockServer.response;
 
 import javax.persistence.Column;
 import java.util.Date;
+import java.util.List;
 
 public class ItemInformationResponse {
+
+
     private int id;
 
       
@@ -51,7 +54,108 @@ public class ItemInformationResponse {
       
     private String screenMessage;
 
-      
+    public String getItemBarcode() {
+        return itemBarcode;
+    }
+
+    public void setItemBarcode(String itemBarcode) {
+        this.itemBarcode = itemBarcode;
+    }
+
+    private String itemBarcode;
+
+    private List<String> bibIds;
+
+    private String bibID;
+
+    private String callNumber;
+
+    private String itemType;
+
+    private String nyplsource;
+
+    private String createdDate;
+
+
+
+    public List<String> getBibIds() {
+        return bibIds;
+    }
+
+    public void setBibIds(List<String> bibIds) {
+        this.bibIds = bibIds;
+    }
+
+    public String getBibID() {
+        return bibID;
+    }
+
+    public void setBibID(String bibID) {
+        this.bibID = bibID;
+    }
+
+    public String getCallNumber() {
+        return callNumber;
+    }
+
+    public void setCallNumber(String callNumber) {
+        this.callNumber = callNumber;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public String getNyplsource() {
+        return nyplsource;
+    }
+
+    public void setNyplsource(String nyplsource) {
+        this.nyplsource = nyplsource;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public String getDeletedDate() {
+        return deletedDate;
+    }
+
+    public void setDeletedDate(String deletedDate) {
+        this.deletedDate = deletedDate;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    private String updatedDate;
+
+    private String deletedDate;
+
+    private boolean isDeleted;
+
     private String prineLine;
 
     public int getId() {

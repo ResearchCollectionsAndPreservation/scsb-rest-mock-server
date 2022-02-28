@@ -1,5 +1,6 @@
 package com.nypl.mockServer.service;
 
+import com.nypl.mockServer.model.ItemResponse;
 import com.nypl.mockServer.request.*;
 import com.nypl.mockServer.response.*;
 
@@ -20,5 +21,6 @@ public interface RequestService {
      NYPLHoldResponse nyplHoldRequest(NYPLHoldRequest nyplHoldRequest);
      CreateHoldResponse createHoldItem(CreateHoldRequest createHoldRequest);
      ItemInformationResponse findItemByItemId(String itemIdentifier);
+     ItemResponse findItemByItemIdResponse(String itemIdentifier);
      PatronInformationResponse findPatronByPatronId(String patronIdentifier);
 }

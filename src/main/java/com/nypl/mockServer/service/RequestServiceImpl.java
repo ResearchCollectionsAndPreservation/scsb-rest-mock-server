@@ -2,12 +2,9 @@ package com.nypl.mockServer.service;
 
 import com.nypl.mockServer.*;
 import com.nypl.mockServer.dao.*;
-import com.nypl.mockServer.model.CheckoutData;
+import com.nypl.mockServer.model.*;
 import com.nypl.mockServer.JobData;
 import com.nypl.mockServer.Notice;
-import com.nypl.mockServer.model.HoldData;
-import com.nypl.mockServer.model.Item;
-import com.nypl.mockServer.model.Patron;
 import com.nypl.mockServer.request.*;
 import com.nypl.mockServer.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -290,6 +287,9 @@ public class RequestServiceImpl implements RequestService {
         try {
             Item item = itemRepository.findByItemIdentifier(itemIdentifier);
             if(item!=null) {
+                itemInformationResponse.setItemBarcode(item.getItemIdentifier());
+                itemInformationResponse.setCallNumber(item.getPrineLine());
+                itemInformationResponse.setDeleted(false);
                itemInformationResponse.setCirculationStatus(item.getCirculationStatus());
                itemInformationResponse.setCurrentLocation(item.getCurrentLocation());
                itemInformationResponse.setDueDate(item.getDueDate());
@@ -313,6 +313,34 @@ public class RequestServiceImpl implements RequestService {
             e.printStackTrace();
         }
         return itemInformationResponse;
+    }
+
+    @Override
+    public ItemResponse findItemByItemIdResponse(String itemIdentifier) {
+        ItemResponse itemResponse = new ItemResponse();
+        try {
+            Item item = itemRepository.findByItemIdentifier(itemIdentifier);
+            if(item!=null) {
+
+               List<String> Bids = new ArrayList<>();
+               Bids.add("8384691");
+                ItemData itemData = new ItemData();
+                itemData.setId(String.valueOf(item.getId()));
+                itemData.setStatus(item.getCirculationStatus());
+                itemData.setCreatedDate(item.getTransactionDate().toString());
+                itemData.setLocation(item.getCurrentLocation());
+                itemData.setBarcode("33433119641284");
+                itemData.setBibIds(Bids);
+//                itemData.setCallNumber(item.getCallNumber());
+// itemData.setUpdatedDate((item.getUpdatedDate()));
+//                itemData.setDeleted(item.getDeleted() != null ? (Boolean) itemData.getDeleted() : Boolean.FALSE);
+                itemResponse.setItemData(itemData);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemResponse;
     }
 
     private String DateFormat(){
