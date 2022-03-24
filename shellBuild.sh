@@ -14,7 +14,7 @@ chmod 777 /$PROJ_DIR
 
 cd $PROJ_DIR
 
-git clone https://github.com/ResearchCollectionsAndPreservation/scsb-rest-mock-server.git
+git clone https://github.com/ResearchCollectionsAndPreservation/Phase4-NYPL-MockServer.git
 
 ls  $PROJ_DIR_TAG/
 # echo $PROJ_DIR_TAG
